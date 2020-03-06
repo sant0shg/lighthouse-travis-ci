@@ -17,7 +17,7 @@ const opts = {
 };
 
 const validMetrics = {
-  'first-contentful-paint': 0.65
+  'first-contentful-paint': 0.75
 }
 
 // Usage:
