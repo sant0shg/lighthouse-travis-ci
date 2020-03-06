@@ -16,8 +16,19 @@ const opts = {
   onlyCategories: ['performance']
 };
 
+const validMetrics = {
+  'first-contentful-paint': 0.75
+}
 // Usage:
 launchChromeAndRunLighthouse('https://techdoma.in', opts).then(results => {
   // Use results!
-  fs.writeFileSync('result', JSON.stringify(results))
+  const keys = Object.keys(validMetrics);
+  keys.forEach(key => {
+    const audit = results.audits[key];
+    if(validMetrics[key] <= audit.score){
+      return -1;
+    }
+  });
+  return 0;
+  // fs.writeFileSync('result', JSON.stringify(results))
 });
