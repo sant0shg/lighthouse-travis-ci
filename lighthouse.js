@@ -23,15 +23,16 @@ const validMetrics = {
 // Usage:
 launchChromeAndRunLighthouse('https://techdoma.in', opts).then(results => {
   // Use results!
-  let ret = 0;
   const keys = Object.keys(validMetrics);
   keys.forEach(key => {
     const audit = results.audits[key];
-    if(validMetrics[key] <= audit.score){
+    if(validMetrics[key] > audit.score){
+      console.log('Failed');
       process.exit(1);
     }
   });
   EXITCONDITION = true;
+  console.log('Success');
   process.exit(0);
   
   // fs.writeFileSync('result', JSON.stringify(results))
