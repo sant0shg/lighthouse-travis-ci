@@ -28,12 +28,11 @@ launchChromeAndRunLighthouse('https://techdoma.in', opts).then(results => {
   keys.forEach(key => {
     const audit = results.audits[key];
     if(validMetrics[key] <= audit.score){
-      ret = -1;
+      process.exit(1);
     }
   });
   EXITCONDITION = true;
-  console.log(ret);
-  return ret;
+  process.exit(0);
   
   // fs.writeFileSync('result', JSON.stringify(results))
 });
