@@ -17,7 +17,7 @@ const opts = {
 };
 
 const validMetrics = {
-  'first-contentful-paint': 0.75
+  'first-contentful-paint': 0.65
 }
 // Usage:
 launchChromeAndRunLighthouse('https://techdoma.in', opts).then(results => {
